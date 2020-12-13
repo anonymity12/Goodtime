@@ -23,7 +23,7 @@ jobs:
       run: bash ./gradlew :app:assembleFdroidDebug
       
     - name: show result apks
-      run: ls `pwd` && echo "ls2 done" && pwd && echo "search deeper----" && ls /home/runner/work/Goodtime/Goodtime/app/build/outputs/ && echo "search deeper done" && cd /home/runner/work/Goodtime/Goodtime/app/build/outputs/ &&echo "ls -R" && ls -R |awk '{print i$0}' i=`pwd`'/' && echo "ls -R and awk done!!"
+      run: ls `pwd` && echo "ls2 done" && pwd && echo "search deeper----" && ls /home/runner/work/Goodtime/Goodtime/app/build/outputs/ && echo "search deeper done" && cd /home/runner/work/Goodtime/Goodtime/app/build/outputs/ &&echo "ls -FR" && ls -FR  && echo "ls -FR "
 #/home/runner/work/Goodtime/Goodtime/app/src/main/java/com/apps/adrcotfas/goodtime/Session.java:34: w
     - name: Upload APK
       uses: actions/upload-artifact@v2
