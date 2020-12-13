@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: jst exec ls
+      run: ls ${{ github.workspace }}/app
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
       uses: actions/setup-java@v1
@@ -21,7 +23,7 @@ jobs:
       run: bash ./gradlew :app:assembleDebug
       
     - name: show result apks
-      run: bash ls -al ${{ github.workspace }}/app/build/outputs/apk/debug/
+      run: bash ls -al ${{ github.workspace }}/app/build/outputs/apk
               
     - name: Upload APK
       uses: actions/upload-artifact@v2
