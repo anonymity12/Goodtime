@@ -295,6 +295,7 @@ public class TimerActivity
                 mTimeLabel.startAnimation(loadAnimation(getApplicationContext(), R.anim.scale_reversed));
             }
 
+            // tt 这里是指 按压 后的 release 嘛？ 我没见过
             @Override
             public void onRelease(View view) {
                 mTimeLabel.startAnimation(loadAnimation(getApplicationContext(), R.anim.scale));
@@ -387,6 +388,7 @@ public class TimerActivity
         menuInflater.inflate(R.menu.menu_main, menu);
 
         MenuItem batteryButton = menu.findItem(R.id.action_battery_optimization);
+        // tt 这里 检查用户 os 版本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !isIgnoringBatteryOptimizations(this)) {
             batteryButton.setVisible(true);
         } else {
@@ -419,8 +421,7 @@ public class TimerActivity
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.action_reset_counter_title)
                         .setMessage(R.string.action_reset_counter)
-                        .setPositiveButton(android.R.string.ok, (dialog, which)
-                                -> {
+                        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                             mSessionViewModel.deleteSessionsFinishedToday();
                             PreferenceHelper.resetCurrentStreak();
                         })
