@@ -453,6 +453,7 @@ public class TimerActivity
                 setTimeLabelColor();
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> mTimeLabel.clearAnimation(), 300);
+            //如果 现在 的状态 是 暂停，那么我们的text view 就开始 闪烁
             } else if (timerState == TimerState.PAUSED) {
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> mTimeLabel.startAnimation(
@@ -707,11 +708,14 @@ public class TimerActivity
         } else {
             final int color = ThemeHelper.getColor(this, label.colorId);
             if (PreferenceHelper.showCurrentLabel()) {
+                // 这样 就没有 那个 图形 icon
                 mLabelButton.setVisible(false);
+                //这样 就有个 “编程” 的label
                 mLabelChip.setVisibility(View.VISIBLE);
                 mLabelChip.setText(label.title);
                 mLabelChip.setChipBackgroundColor(ColorStateList.valueOf(color));
             } else {
+                // 这样 有 图形 icon ，没有“编程” 的label
                 mLabelChip.setVisibility(View.GONE);
                 mLabelButton.setVisible(true);
                 mLabelButton.getIcon().setColorFilter(
